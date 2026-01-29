@@ -16,9 +16,10 @@ let ai = null;
 
 async function initAI() {
   try {
-    ai = await window.webllm.createChatModule({
-      model: "Qwen2.5-1.5B-Instruct-q4f16_1"
-    });
+    // createChatModule is deprecated; use CreateMLCEngine
+    ai = await window.webllm.CreateMLCEngine(
+      "Qwen2.5-1.5B-Instruct-q4f16_1"
+    );
 
     appendSystem("Synthwave AI is online.");
   } catch (err) {
