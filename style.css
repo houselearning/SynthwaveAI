@@ -19,16 +19,6 @@ header {
   padding-bottom: 10px;
 }
 
-.logo {
-  width: 40px;
-  margin-right: 10px;
-}
-
-.brand {
-  display: flex;
-  align-items: center;
-}
-
 .chat-body {
   height: 70vh;
   overflow-y: auto;
