@@ -1,0 +1,82 @@
+body {
+  margin: 0;
+  background: radial-gradient(circle at top, #2a0b5a, #050014 60%, #000);
+  font-family: 'Orbitron', sans-serif;
+  color: #fff;
+}
+
+.app-shell {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ff2fd0;
+  padding-bottom: 10px;
+}
+
+.logo {
+  width: 40px;
+  margin-right: 10px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+}
+
+.chat-body {
+  height: 70vh;
+  overflow-y: auto;
+  padding: 10px;
+  border: 1px solid #00f6ff;
+  border-radius: 10px;
+  background: rgba(0,0,0,0.4);
+}
+
+.message {
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 12px;
+  max-width: 70%;
+}
+
+.user {
+  background: #ff2fd0;
+  margin-left: auto;
+  color: #000;
+}
+
+.ai {
+  background: #0b0220;
+  border: 1px solid #00f6ff;
+}
+
+.input-area {
+  display: flex;
+  margin-top: 10px;
+}
+
+textarea {
+  flex: 1;
+  padding: 10px;
+  border-radius: 10px;
+  background: #0b0220;
+  color: #fff;
+  border: 1px solid #00f6ff;
+}
+
+button {
+  margin-left: 10px;
+  padding: 10px 16px;
+  border-radius: 10px;
+  background: #ff2fd0;
+  border: none;
+  cursor: pointer;
+  color: #000;
+  font-weight: bold;
+}
