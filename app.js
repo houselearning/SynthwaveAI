@@ -18,7 +18,7 @@ async function initAI() {
   try {
     // createChatModule is deprecated; use CreateMLCEngine
     ai = await window.webllm.CreateMLCEngine(
-      "Qwen2.5-1.5B-Instruct-q4f16_1"
+      "Qwen2.5-1.5B-Instruct-q4f16_1-MLC"
     );
 
     appendSystem("Synthwave AI is online.");
