@@ -6,9 +6,6 @@
   <link rel="stylesheet" href="style.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Optional favicon (remove if not used) -->
-  <!-- <link rel="icon" href="assets/favicon.ico"> -->
-
   <!-- Firebase (must load BEFORE app.js) -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
@@ -40,11 +37,11 @@
     };
   </script>
 
-  <!-- WebLLM (correct CDN) -->
-<script type="module">
-  import * as webllm from "https://esm.run/@mlc-ai/web-llm";
-  window.webllm = webllm;
-</script>
+  <!-- WebLLM (correct ESM import) -->
+  <script type="module">
+    import * as webllm from "https://esm.run/@mlc-ai/web-llm";
+    window.webllm = webllm;
+  </script>
 </head>
 
 <body>
