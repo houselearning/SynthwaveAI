@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Synthwave AI by HouseLearning</title>
+  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Firebase -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
+    import {
+      getAuth,
+      onAuthStateChanged,
+      signInWithEmailAndPassword,
+      createUserWithEmailAndPassword,
+      signInAnonymously,
+      signOut
+    } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDoXSwni65CuY1_32ZE8B1nwfQO_3VNpTw",
+      authDomain: "contract-center-llc-10.firebaseapp.com",
+      projectId: "contract-center-llc-10"
+    };
+
+    window.firebaseApp = initializeApp(firebaseConfig);
+    window.firebaseAuth = getAuth(firebaseApp);
+    window.firebaseAuthFns = {
+      onAuthStateChanged,
+      signInWithEmailAndPassword,
+      createUserWithEmailAndPassword,
+      signInAnonymously,
+      signOut
+    };
+  </script>
+
+  <!-- WebLLM (browser‑only AI) -->
+  <script src="https://cdn.jsdelivr.net/npm/@mlc-ai/web-llm/dist/web-llm.min.js"></script>
+</head>
+
+<body>
+  <div class="app-shell">
+    <header>
+      <div class="brand">
+        <img src="assets/logo.png" class="logo">
+        <h1>Synthwave AI</h1>
+      </div>
+
+      <div class="auth">
+        <span id="user-pill"></span>
+        <button id="login-btn">Log in</button>
+        <button id="logout-btn" style="display:none;">Log out</button>
+      </div>
+    </header>
+
+    <main>
+      <div id="chat-body" class="chat-body"></div>
+
+      <div class="input-area">
+        <textarea id="user-input" placeholder="Say something..."></textarea>
+        <button id="voice-btn">🎤</button>
+        <button id="send-btn">Send</button>
+      </div>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
