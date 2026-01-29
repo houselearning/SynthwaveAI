@@ -1,13 +1,21 @@
 // ------------------------------
-// 1. WebLLM — browser‑only AI
+// 1. WebLLM — browser AI
 // ------------------------------
 let ai = null;
 
 async function initAI() {
-  ai = new window.webllm.ChatModule();
-  await ai.reload("Qwen2.5-1.5B-Instruct-q4f16_1"); // small, fast, no API key
-  appendSystem("Synthwave AI is online.");
+  try {
+    ai = await webllm.createChatModule({
+      model: "Qwen2.5-1.5B-Instruct-q4f16_1"
+    });
+
+    appendSystem("Synthwave AI is online.");
+  } catch (err) {
+    appendSystem("AI failed to load. Check WebLLM CDN.");
+    console.error(err);
+  }
 }
+
 initAI();
 
 // ------------------------------
@@ -64,6 +72,11 @@ sendBtn.onclick = async () => {
   saveHistory();
   userInput.value = "";
 
+  if (!ai) {
+    appendSystem("AI not ready yet.");
+    return;
+  }
+
   const reply = await ai.generate(text);
   appendMessage("ai", reply);
   messages.push({ role: "ai", text: reply });
@@ -91,9 +104,13 @@ if ("webkitSpeechRecognition" in window) {
 // 6. Firebase Auth
 // ------------------------------
 const auth = window.firebaseAuth;
-const { onAuthStateChanged, signInWithEmailAndPassword,
-        createUserWithEmailAndPassword, signInAnonymously, signOut } =
-        window.firebaseAuthFns;
+const {
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  signInAnonymously,
+  signOut
+} = window.firebaseAuthFns;
 
 const loginBtn = document.getElementById("login-btn");
 const logoutBtn = document.getElementById("logout-btn");
