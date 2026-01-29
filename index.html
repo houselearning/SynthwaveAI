@@ -41,7 +41,10 @@
   </script>
 
   <!-- WebLLM (correct CDN) -->
-  <script src="https://esm.run/@mlc-ai/web-llm"></script>
+<script type="module">
+  import * as webllm from "https://esm.run/@mlc-ai/web-llm";
+  window.webllm = webllm;
+</script>
 </head>
 
 <body>
