@@ -1,11 +1,22 @@
 // ------------------------------
+// DOM ELEMENTS (must be first)
+// ------------------------------
+const chatBody = document.getElementById("chat-body");
+const userInput = document.getElementById("user-input");
+const sendBtn = document.getElementById("send-btn");
+const voiceBtn = document.getElementById("voice-btn");
+const loginBtn = document.getElementById("login-btn");
+const logoutBtn = document.getElementById("logout-btn");
+const userPill = document.getElementById("user-pill");
+
+// ------------------------------
 // 1. WebLLM — browser AI
 // ------------------------------
 let ai = null;
 
 async function initAI() {
   try {
-    ai = await webllm.createChatModule({
+    ai = await window.webllm.createChatModule({
       model: "Qwen2.5-1.5B-Instruct-q4f16_1"
     });
 
@@ -21,10 +32,6 @@ initAI();
 // ------------------------------
 // 2. Chat UI + history
 // ------------------------------
-const chatBody = document.getElementById("chat-body");
-const userInput = document.getElementById("user-input");
-const sendBtn = document.getElementById("send-btn");
-
 const HISTORY_KEY = "synthwave_history";
 let messages = JSON.parse(localStorage.getItem(HISTORY_KEY) || "[]");
 
@@ -86,8 +93,6 @@ sendBtn.onclick = async () => {
 // ------------------------------
 // 5. Voice input
 // ------------------------------
-const voiceBtn = document.getElementById("voice-btn");
-
 if ("webkitSpeechRecognition" in window) {
   const rec = new webkitSpeechRecognition();
   rec.lang = "en-US";
@@ -111,10 +116,6 @@ const {
   signInAnonymously,
   signOut
 } = window.firebaseAuthFns;
-
-const loginBtn = document.getElementById("login-btn");
-const logoutBtn = document.getElementById("logout-btn");
-const userPill = document.getElementById("user-pill");
 
 loginBtn.onclick = () => signInAnonymously(auth);
 logoutBtn.onclick = () => signOut(auth);
